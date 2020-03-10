@@ -12,7 +12,7 @@ function getDate() {
     let options = {
         weekday: "long",
         day: "numeric",
-        month: "long",
+        month: "numeric",
         year: "numeric"
     };
     
