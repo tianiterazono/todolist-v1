@@ -47,6 +47,7 @@ app.post("/", function(req, res) {
         res.redirect("/work");
     } 
     
+    // if route is /fun, add to fun list
     else if (req.body.list === "Fun") {
         funItems.push(item);
         res.redirect("/fun");
@@ -58,14 +59,14 @@ app.post("/", function(req, res) {
     }
 });
 
-// display default to do list on the localhost:3000/work route!
+// display work to do list on the localhost:3000/work route!
 app.get("/work", function(req, res){
 
   let day = date.getDate();
     res.render("list", {listTitle: "Work To Do List", newListItems: workItems})
 });
 
-// display default to do list on the localhost:3000/work route!
+// display fun to do list on the localhost:3000/work route!
 app.get("/fun", function(req, res){
 
   let day = date.getDate();
