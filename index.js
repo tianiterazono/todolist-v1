@@ -29,7 +29,7 @@ app.get("/weekday", function(req, res) {
     let day = date.getDate();
     
     // use EJS render to display the day and the To Do List
-    res.render("list", {listTitle: day, newListItems: weekdayItems});
+    res.render("list", {listTitle: "Weekday To Do List", newListItems: weekdayItems});
     
 });
 
