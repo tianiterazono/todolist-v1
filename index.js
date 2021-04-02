@@ -14,6 +14,8 @@ let items = ["Buy Food", "Prepare Food", "Cook Food", "Eat Food"];
 let workItems = ["Show Up"];
 // create new array for fun items
 let funItems = ["Watch TV", "Read a Book"];
+// set an empty array for new weekend items
+let weekendItems = ["Relax", "Watch TV"];
 
 // set EJS as the viewing engine to display html
 app.set('view engine', 'ejs');
@@ -53,6 +55,12 @@ app.post("/", function(req, res) {
         res.redirect("/fun");
     } 
 
+    // if route is /weekend, add to fun list
+    else if (req.body.list === "Weekend") {
+        weekendItems.push(item);
+        res.redirect("/weekend");
+    }
+
     else {
         items.push(item);
         res.redirect("/");
@@ -66,11 +74,16 @@ app.get("/work", function(req, res){
     res.render("list", {listTitle: "Work To Do List", newListItems: workItems})
 });
 
-// display fun to do list on the localhost:3000/work route!
+// display fun to do list
 app.get("/fun", function(req, res){
 
   let day = date.getDate();
     res.render("list", {listTitle: "Fun To Do List", newListItems: funItems})
+});
+
+// display weekend to do list
+app.get("/weekend", function(req, res){
+    res.render("list", {listTitle: "Weekend To Do List", newListItems: weekendItems})
 });
 
 app.listen(3000, function() {
